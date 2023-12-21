@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+<img src="{% static 'images/category.jpg' %}" width="100%" height="400px">
+</div>
+<div class="container-fluid mt-4" style="margin-bottom:60px;">
+    <h3 class="text-center fw-bold">Collections</h3>
+    <p style="line-height:2.0;text-align:justify;">eCommerce websites have become an integral part of any business’ success. The increase in online sales during the pandemic saw business owners moving from physical storefronts to digital solutions to sell online, helping to expand their reach and increase revenue.
+
+
+Whether you’re a beginner or already have a physical store, building an eCommerce site requires careful attention to design, aesthetics, navigation, and accessibility. These elements are vital for leaving a lasting impression and delivering a smooth shopping experience.
+
+To help you create an online store that stands out, this article lists 25 eCommerce websites with excellent designs and functionality for inspiration. We also list six crucial eCommerce design aspects as a starting point for your online selling journey.</p>
+</div>
+
+<div class="container rounded">
+    <div class="row">
+        {% for i in category %}
+        <div class="col-lg-4">
+
+            <div class="card" style="width: 18rem; margin-bottom:60px;">
+
+  <img src="{{i.image.url}}" class="card-img-top p-2" alt="..." style="height:200px;">
+  <div class="card-body">
+    <h5 class="card-title text-center">{{i.name}}</h5>
+    <p class="card-text text-center">{{i.desc}}</p>
+    <a href="{% url 'shop:allproducts' i.name %}" class="btn btn-primary" style="position:relative;left:24%;">View Products</a>
+  </div>
+
+</div>
+        </div>
+{% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
